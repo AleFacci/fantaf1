@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.fantaf1"
-        minSdk 24
+        minSdk 26
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -30,6 +30,8 @@ android {
 
 dependencies {
 
+    implementation 'org.apache.parquet:parquet-avro:1.8.1'
+    implementation 'org.apache.hadoop:hadoop-common:3.3.5'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
