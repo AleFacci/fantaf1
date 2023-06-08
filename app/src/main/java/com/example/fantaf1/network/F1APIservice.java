@@ -15,12 +15,9 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class F1APIservice {
-    private AppCompatActivity context;
     private URL BASE_URL;
 
-    public F1APIservice(AppCompatActivity aContext){
-        context = aContext;
-    }
+    public F1APIservice(){}
 
     public JSONObject fetchData(String url){
         try {
@@ -55,8 +52,7 @@ public class F1APIservice {
             }
 
         } catch (Exception e) {
-
-            context.runOnUiThread(()-> Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show());
+            e.printStackTrace();
         }
         return null;
     }

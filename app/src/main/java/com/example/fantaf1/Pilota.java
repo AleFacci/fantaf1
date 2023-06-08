@@ -8,18 +8,35 @@ import androidx.annotation.NonNull;
 import org.json.JSONObject;
 
 public class Pilota extends Char implements Parcelable {
-    private String name, code;
+    private String name;
 
-    public Pilota(Scuderia aScuderia, String aName, String aCode) {
+    private int wins, podiums;
+
+    public Pilota(Scuderia aScuderia, String aName, String aCode, int aWins, int aPodiums) {
         super(aScuderia);
         name = aName;
-        code = aCode;
+        wins = aWins;
+        podiums = aPodiums;
     }
 
     protected Pilota(Parcel in) {
         super(in);
         name = in.readString();
-        code = in.readString();
+        wins = in.readInt();
+        podiums = in.readInt();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        super.writeToParcel(dest, flags);
+        dest.writeString(name);
+        dest.writeInt(wins);
+        dest.writeInt(podiums);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<Pilota> CREATOR = new Creator<Pilota>() {
@@ -68,14 +85,4 @@ public class Pilota extends Char implements Parcelable {
         }catch (Exception e){}
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(@NonNull Parcel parcel, int i) {
-        parcel.writeString(name);
-        parcel.writeString(code);
-    }
 }
